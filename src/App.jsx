@@ -309,8 +309,7 @@ export default function App() {
   return (
     <div style={{ background: C.void, minHeight: '100vh', color: C.snow, fontFamily: "'Inter', ui-sans-serif, system-ui" }}>
       <style>{`
-        .os-shell { max-width: 1240px; margin: 0 auto; padding: 28px 20px 90px; }
-        .os-grid { display: block; }
+.os-shell { max-width: 100%; margin: 0; padding: 28px 40px 90px; }        .os-grid { display: block; }
         .os-side { margin-top: 20px; }
         @media (min-width: 980px) {
           .os-grid { display: grid; grid-template-columns: 1fr 330px; gap: 26px; align-items: start; }
