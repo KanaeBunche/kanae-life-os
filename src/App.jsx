@@ -14,141 +14,61 @@ const MONO = "ui-monospace, 'JetBrains Mono', monospace"
 
 /* ─── 8-week curriculum: [lesson, lesson detail, lab detail] ─── */
 const WEEKS = [
-  { theme: 'PC Hardware', days: [
-    ['Cables, connectors & peripherals',
-      'Professor Messer 220-1101: watch the full Cables & Connectors section (USB versions/speeds, video: HDMI/DP/VGA, SATA, Lightning, Thunderbolt). Take notes in your own words.',
-      'Physically identify every port on your own machine and one other device. Then write the full list from memory — USB gen + speed, video, audio, network.'],
-    ['Motherboards & form factors',
-      'Messer: Motherboard Form Factors + Expansion Slots + BIOS/UEFI. Know ATX vs ITX, PCIe lanes, M.2 keys, CMOS battery, boot order.',
-      'Open a PC or use a labeled hi-res photo: locate and name chipset, RAM slots, M.2, SATA headers, 24-pin + CPU power, front-panel headers.'],
-    ['CPUs, sockets & cooling',
-      'Messer: CPU Features + Cooling. Cores vs threads, virtualization support (VT-x/AMD-V), LGA vs PGA sockets, air vs liquid cooling, thermal paste.',
-      'Run msinfo32 + Task Manager → Performance → CPU. Record model, cores, threads, virtualization enabled? Look up its socket type.'],
-    ['RAM types & channels',
-      'Messer: Memory. DDR4 vs DDR5, DIMM vs SODIMM, single/dual channel, ECC vs non-ECC, virtual memory/paging.',
-      'Task Manager → Memory: record speed, slots used, form factor. Then explain out loud what dual channel does and why laptops use SODIMM.'],
-    ['Storage: HDD, SSD, NVMe & RAID',
-      'Messer: Storage Devices + RAID. 5400/7200rpm, SATA vs NVMe speeds, M.2 vs 2.5", RAID 0/1/5/10 — know what each survives.',
-      'Disk Management lab: view your partitions and file systems, shrink a volume, create + format a new one, then delete it.'],
+  { theme: 'Mobile Devices + Networking I', days: [
+    ['Videos: 1.1 Laptop Hardware (16:42) + intro', 'ONE video at a time. Watch "How to Pass Your A+ Exams" (15:22) at 1.5x, then "Laptop Hardware" (16:42) normally. AFTER the laptop video: close everything, blank page, write everything you remember (2 min). THEN check notes and fill gaps in a different color.', 'Run powercfg /batteryreport on a laptop and read it. List which parts of YOUR laptop are user-replaceable. Then 5 Messer pop-quiz questions on mobile devices.'],
+    ['Videos: 1.2 Connecting Mobile Devices (6:08) + Accessories (7:18)', 'Two SHORT videos. Same loop each one: watch -> blank-page brain dump -> check notes -> fill gaps. Know: USB/Lightning/NFC/Bluetooth, hotspots, tethering, docks.', 'iPhone lab: pair a Bluetooth device fresh, set up a hotspot and connect your laptop through it. Then quiz yourself out loud: every way a phone can connect.'],
+    ['Videos: 1.3 Mobile Networks (10:14) + MDM (8:31)', 'Watch -> dump -> check, one video at a time. Know: 3G/4G/5G, SIM/eSIM, GPS, MDM, BYOD vs COPE.', 'Find cellular + eSIM settings on your iPhone. Explain MDM out loud like a client asked "why does my work phone have a profile on it?"'],
+    ['Videos: 2.1 Introduction to IP (19:04)', 'ONE video today - it is dense. Watch in two halves with a brain dump after each half. Know: IP, TCP vs UDP, how port numbers work.', 'START the ports flashcard deck: FTP 20/21, SSH 22, Telnet 23, SMTP 25, DNS 53, DHCP 67/68, HTTP 80, POP3 110, IMAP 143, HTTPS 443, SMB 445, RDP 3389. Run it twice. This deck is daily now.'],
+    ['Videos: 2.1 Common Ports (12:52)', 'Watch AFTER running your ports deck first. The video will feel like review - that is the point. Dump, check, fill gaps.', 'Ports deck until 100% once. Then in Terminal: ping a site and read every field out loud.'],
   ]},
-  { theme: 'Windows', days: [
-    ['Windows editions & installation',
-      'Messer 220-1102: Windows Editions + Installations. Home vs Pro vs Enterprise features (BitLocker, RDP host, domain join), upgrade paths, clean vs in-place.',
-      'Install a Windows VM in VirtualBox start to finish. Screenshot every install decision and write one line on what it does.'],
-    ['File systems & Disk Management',
-      'Messer: File Systems. NTFS vs FAT32 vs exFAT — max sizes, permissions, journaling. When each is used.',
-      'In the VM: add a virtual disk, format it NTFS, reformat exFAT. Note what you gain/lose each way.'],
-    ['Users, groups & password resets',
-      'Messer: User Accounts + Group Policy basics. Local vs Microsoft account, Administrators vs Users group, UAC.',
-      'VM lab: create 3 local users, put one in Administrators, reset a password from an admin account, trigger and observe a lockout.'],
-    ['Device Manager & drivers',
-      'Messer: Device Manager + Drivers. Driver signing, rollback, disable vs uninstall, unknown devices.',
-      'VM lab: roll back a driver, disable/re-enable a device, install one driver manually from a downloaded package.'],
-    ['Task Manager, msconfig, Control Panel vs Settings',
-      'Messer: Task Manager + System Utilities. Startup impact, services tab, msconfig boot options, where Control Panel and Settings overlap.',
-      'Kill a hung process, disable a startup app, then find the SAME 5 settings in both Control Panel and Settings (power, network, users, display, apps).'],
+  { theme: 'Networking II', days: [
+    ['Videos: 2.2 Wireless (7:16) + 2.3 Network Services (17:03)', 'Short one first, then services in two halves with dumps. Know: 802.11 bands/channels, RFID, NFC, DNS, DHCP, proxies, load balancers, IoT.', 'Router lab: log into your real router, identify 2.4 vs 5GHz + channels, view connected devices. List every network service running in your home.'],
+    ['Videos: 2.4 DNS Configuration (18:18)', 'One dense video, two halves, dump after each. Know records: A, AAAA, CNAME, MX, TXT + what DKIM/SPF/DMARC do.', 'nslookup 3 domains, identify record types. Write the record types from memory. Ports deck.'],
+    ['Videos: 2.4 DHCP (10:46) + VLANs/VPNs (7:32)', 'Watch -> dump -> check each. Know: DORA lease process, scopes, reservations, why VLANs segment, client vs site-to-site VPN.', 'VM lab: ipconfig /release then /renew - narrate DORA while it happens. Then explain a VLAN out loud using your router as the example.'],
+    ['Videos: 2.5 Network Devices (18:01)', 'Two halves + dumps. Know: router vs switch vs AP vs firewall vs modem/ONT, managed vs unmanaged, PoE, NIC.', 'Draw YOUR home network from wall to devices, labeling every device with its exam term. From memory, second pass.'],
+    ['Videos: 2.6 IPv4/IPv6 (8:45) + Assigning IPs (8:26)', 'Watch -> dump -> check each. Know: private ranges (10.x / 172.16 / 192.168), APIPA 169.254 = "DHCP failed", static vs dynamic, IPv6 basics.', 'VM lab: set a static IP/mask/gateway/DNS, confirm internet, break the gateway on purpose, observe what fails. Ports deck.'],
   ]},
-  { theme: 'Networking', days: [
-    ['IP addressing & subnet basics',
-      'Messer 220-1101: IPv4 Addressing. Private ranges (10/172.16/192.168), APIPA 169.254, subnet mask role, gateway, static vs DHCP.',
-      'ipconfig /all on host and VM: record IP, mask, gateway, MAC, DNS. Then set a static IP on the VM and confirm it still reaches the internet.'],
-    ['DNS & DHCP',
-      'Messer: DNS + DHCP. What each does, lease process (DORA), record types A/AAAA/MX/CNAME, public resolvers.',
-      'Terminal lab: nslookup 3 domains, ipconfig /flushdns, /release then /renew — narrate out loud what happened at each step.'],
-    ['Routers, switches & home networks',
-      'Messer: Network Devices. Router vs switch vs access point vs modem, NAT, port forwarding basics.',
-      'Log into your real router: find the DHCP range, view connected devices, locate port forwarding, change the WiFi channel.'],
-    ['Wireless standards & security',
-      'Messer: Wireless Standards + Encryption. 802.11 a/b/g/n/ac/ax speeds and bands, WPA2 vs WPA3, 2.4 vs 5GHz tradeoffs.',
-      'On your router: confirm WPA version, identify both bands. Scan nearby networks and classify each by band.'],
-    ['Ports & protocols — memorize',
-      'Messer: Common Ports. This is pure memorization and guaranteed exam points: 20/21, 22, 23, 25, 53, 67/68, 80, 110, 143, 443, 445, 3389.',
-      'Flashcard drill until 100% twice in a row. Then ping and tracert three sites and read every hop.'],
+  { theme: 'Networking wrap + Hardware I', days: [
+    ['Videos: 2.7 Connection Types (7:33) + Network Types (4:46)', 'Two short ones. Know: fiber/cable/DSL/satellite/cellular/WISP, LAN/WAN/PAN/SAN/WLAN.', 'Identify YOUR internet connection type, trace modem/ONT -> router -> devices. tracert 2 sites, read each hop out loud.'],
+    ['Videos: 2.8 Network Tools (11:48)', 'One video. Know by sight: crimper, punch-down, tone generator, cable tester, loopback plug, Wi-Fi analyzer, tap.', 'Image quiz: google each tool, cover the name, identify from photo alone. Then 10 Messer networking pop-quiz questions.'],
+    ['Videos: 3.1 Display Types (9:13) + Attributes (12:01)', 'Watch -> dump -> check each. Know: IPS/TN/VA, OLED, Mini LED, digitizer, inverter, resolution, refresh rate, color gamut.', 'Settings -> Display -> Advanced on your machines: record exact resolution + refresh rate. Ports deck.'],
+    ['Videos: 3.2 Network Cables (12:14) + 568A/B (5:41)', 'Watch -> dump -> check. Know: Cat ratings, UTP vs STP, plenum, direct burial, T568A/B order.', 'Draw the T568B color order from memory 3 times. Inspect a real Ethernet cable end - which standard?'],
+    ['Videos: 3.2 Fiber (4:14) + Fiber Connectors (2:49) + Peripheral Cables (8:59)', 'Three short ones, dump after each. Know: multimode vs single-mode, SC/ST/LC, USB gens + speeds, USB-C, Thunderbolt.', 'Port hunt: name the exact standard + max speed of every port on your machines, from memory. Weekly ports quiz - written, from scratch.'],
   ]},
-  { theme: 'Mobile · Printers · Virtualization · Cloud', days: [
-    ['Laptop hardware & displays',
-      'Messer: Laptop Hardware. What is user-replaceable (RAM/SSD/battery — sometimes), LCD vs OLED, inverters, function keys.',
-      'Run powercfg /batteryreport on a laptop and read it. List which components in YOUR laptop are replaceable.'],
-    ['Mobile OS, sync & security',
-      'Messer: Mobile Devices. MDM, corporate vs BYOD, backups, biometrics, locator apps, remote wipe.',
-      'iPhone settings walkthrough: check backup status, review Face ID settings, find VPN config, review app permissions for 3 apps.'],
-    ['Printers & scanners',
-      'Messer: Printers. Laser printing 7-step process (memorize the order), inkjet, thermal, duplex, print servers.',
-      'VM lab: add a printer (PDF printer counts), share it, print a test page, pause the queue, clear a stuck job.'],
-    ['Virtualization concepts',
-      'Messer: Virtualization. Hypervisor type 1 vs 2, VM requirements, sandboxing, why IT uses snapshots.',
-      'VirtualBox lab: snapshot the VM, intentionally break something, restore the snapshot. Feel how powerful that is.'],
-    ['Cloud models: IaaS / PaaS / SaaS',
-      'Messer: Cloud Computing. Service models, public/private/hybrid, elasticity, metered billing, shared resources.',
-      'Map 5 services you actually use (Vercel, Supabase, Gmail, iCloud, GitHub) to IaaS/PaaS/SaaS and defend each answer.'],
+  { theme: 'Hardware II — Guts of the Machine', days: [
+    ['Videos: 3.2 Video (7:03) + Storage Cables (4:10) + Adapters (4:05) + Copper Connectors (8:33)', 'Four short videos, dump after each pair. Know: HDMI/DP/DVI/VGA, SATA/eSATA, RJ11 vs RJ45, F-connector, Molex.', 'Connector image quiz: identify RJ11, RJ45, F, SC, LC, Molex, SATA, USB-C from photos, names covered.'],
+    ['Videos: 3.3 Memory Overview (8:38) + Memory Tech (8:44)', 'Watch -> dump -> check each. Know: DIMM vs SO-DIMM, DDR3/4/5, ECC, parity, multi-channel, virtual memory.', 'Task Manager -> Memory on host + VM: record speed/slots/form factor. Teach dual-channel out loud.'],
+    ['Videos: 3.4 Storage Devices (14:54) + RAID (8:08)', 'Storage in two halves + dump, RAID whole + dump. Know: HDD/SSD/NVMe speeds, M.2, RAID 0/1/5/6/10 and what each survives.', 'Disk Management lab in VM: add disk, initialize, partition, format, shrink, extend. Self-quiz: which RAID survives 2 failures?'],
+    ['Videos: 3.5 Form Factors (6:18) + Expansion Slots (7:14) + Connections (5:45) + Compatibility (3:29)', 'Four short, dump after each pair. Know: ATX/mATX/ITX, PCIe lanes, headers, Intel vs AMD sockets.', 'Labeled board photo: locate chipset, RAM slots, M.2, SATA, 24-pin, CPU power, front-panel headers. Second pass from memory.'],
+    ['Videos: 3.5 The BIOS (4:42) + BIOS Settings (19:29)', 'BIOS Settings in two halves with dumps. Know: UEFI, boot order, secure boot, BIOS passwords, USB permissions.', 'Reboot into your real UEFI: find boot order, secure boot, TPM status, virtualization toggle. Screenshot, change nothing.'],
   ]},
-  { theme: 'Security', days: [
-    ['Physical & logical security',
-      'Messer 220-1102: Physical Security. Badges, mantraps/access vestibules, cameras, locks, MFA factors (something you know/have/are).',
-      'Pick a real place you know well and audit it: list every security control, map each to its exam term.'],
-    ['Authentication & NTFS vs share permissions',
-      'Messer: Windows Security Settings. NTFS vs share permissions and the "most restrictive wins" rule, inheritance, EFS.',
-      'VM lab: shared folder with conflicting NTFS/share permissions — predict the effective access, then test as another user.'],
-    ['Malware types & removal',
-      'Messer: Malware + Removal. Virus vs worm vs trojan vs ransomware vs rootkit vs keylogger. MEMORIZE the 7-step removal order.',
-      'Write the 7 steps from memory. Run a Defender full scan, explore quarantine and protection history.'],
-    ['Encryption & wireless security',
-      'Messer: Encryption. At-rest vs in-transit, BitLocker vs EFS, TPM, certificates and HTTPS.',
-      'Check BitLocker options on your machine. Inspect the TLS certificate on 3 HTTPS sites — issuer, expiry, chain.'],
-    ['Social engineering & best practices',
-      'Messer: Social Engineering. Phishing/vishing/smishing, shoulder surfing, tailgating, dumpster diving, evil twin.',
-      'Find 5 real phishing red flags in your spam folder. Review your own screen-lock, UAC level, and password habits — fix one.'],
+  { theme: 'Hardware wrap + Virtualization + Cloud', days: [
+    ['Videos: 3.5 HSM/TPM (7:47) + CPU Features (5:13) + Expansion Cards (6:17)', 'Three short, dump each. Know: TPM vs HSM, 32 vs 64-bit, ARM, cores, sound/video/capture/NIC cards.', 'msinfo32: record your CPU cores/threads/architecture + TPM version. Ports deck.'],
+    ['Videos: 3.5 Cooling (6:37) + 3.6 Computer Power (15:31)', 'Power in two halves + dumps. Know: heat sinks, thermal paste, liquid cooling, PSU wattage, redundant PSUs, 80 Plus.', 'Look up your machines PSU/adapter wattage. Scenario out loud: PC randomly restarts under load - walk your diagnosis.'],
+    ['Videos: 3.7 Multifunction Devices (14:25) + 3.8 Laser Maintenance (7:30)', 'Watch -> dump -> check each. Know: printer languages, secure/badge printing, laser process steps, toner, maintenance kits.', 'VM lab: install a printer (PDF printer counts), share it, print test page, pause queue, clear a stuck job.'],
+    ['Videos: 3.8 Inkjet + Thermal + Impact (all 6 shorts, ~25 min)', 'Six tiny videos - dump after each TYPE (inkjet pair, thermal pair, impact pair).', 'One-page chart from memory: laser vs inkjet vs thermal vs impact - how it prints, consumables, failures, where you see it (receipts = thermal).'],
+    ['Videos: 4.1 Virtualization (5:45 + 11:23) + 4.2 Cloud (9:48 + 6:50)', 'Four videos, dump after each pair. Know: type 1 vs 2 hypervisors, VDI, containers, IaaS/PaaS/SaaS, elasticity, multitenancy.', 'Snapshot the VM, break it, restore it. Map 5 services you use (Vercel, Supabase, GitHub, iCloud, Gmail) to IaaS/PaaS/SaaS out loud.'],
   ]},
-  { theme: 'Troubleshooting', days: [
-    ['The method + hardware issues',
-      'Messer: Troubleshooting Methodology — memorize all 6 steps IN ORDER (identify, theory, test, plan+implement, verify, document). Then hardware: no POST, beep codes, overheating.',
-      'Write the 6 steps from memory. Talk through 3 scenarios out loud: no POST, random shutdowns, loud fan.'],
-    ['Windows issues',
-      'Messer: Troubleshooting Windows. Boot errors, slow performance, BSOD basics, Safe Mode, System Restore, SFC/DISM.',
-      'Break the VM: disable a service it needs, boot Safe Mode, fix it. Then run sfc /scannow and read the result.'],
-    ['Network issues',
-      'Messer: Troubleshooting Networks. No connectivity vs no internet, APIPA meaning, DNS failures, the ping-out-in-order method.',
-      'Sabotage VM networking (wrong static IP, bad DNS) and repair using only ipconfig, ping, nslookup.'],
-    ['Printer & peripheral issues',
-      'Messer: Troubleshooting Printers. Spooler restarts, garbled output = driver, lines/streaks = hardware, offline states.',
-      'services.msc: restart the Print Spooler. Walk through fixing: stuck queue, offline printer, wrong-driver gibberish.'],
-    ['Mobile & security issues',
-      'Messer: Troubleshooting Mobile + Security. Battery drain, overheating, app crashes, signs of compromise, force-stop vs reinstall.',
-      'Write your step-by-step for 4 scenarios: slow phone, battery dying fast, one app crashing, "my account got hacked."'],
+  { theme: 'Troubleshooting — Core 1 finish', days: [
+    ['Videos: 5.1 Troubleshooting Hardware (25:15)', 'Two halves + dumps. MEMORIZE the 6-step method - it opens every scenario question. Know: POST, beep codes, BSoD, no power, overheating.', 'Write the 6 steps from memory. Talk through: no POST, random shutdowns, loud fan + slow.'],
+    ['Videos: 5.2 Storage (17:04) + start 5.3', 'Storage in two halves + dumps. Know: grinding = dying drive, not recognized, corruption, RAID failures, S.M.A.R.T.', 'VM: run chkdsk, check disk status (wmic diskdrive get status). Narrate a "drive not recognized" diagnosis.'],
+    ['Videos: 5.3 Displays (18:52)', 'Two halves + dumps. Know: input source, projector bulbs, fuzzy image = wrong resolution, burn-in, dead pixels.', 'Write step-by-step for: external monitor blank, fuzzy at native res, intermittent flicker.'],
+    ['Videos: 5.4 Mobile (17:52) + 5.5 Networks (15:14)', 'Alternate: video -> dump -> 5 questions -> next video. Know: battery swelling, liquid damage, digitizer drift, APIPA, jitter, port flapping, latency.', 'VM: sabotage networking (bad IP, wrong DNS), repair with only ipconfig/ping/nslookup, narrating the ping-outward method.'],
+    ['Videos: 5.6 Printers (11:54) — ALL 63 DONE', 'Last video. Then skim the whole course index and mark anything foggy for 2x rewatch.', 'services.msc: restart Print Spooler. 30 min of Messer 220-1201 pop quizzes. Celebrate - content phase complete.'],
   ]},
-  { theme: 'Practice Exams', days: [
-    ['Dion Practice Exam #1 — timed, closed book',
-      'Jason Dion on Udemy: full 90-question exam under real conditions. No pausing, no lookups, phone in another room.',
-      'Record your score and every domain you missed questions in. This is your baseline — no judgment, just data.'],
-    ['Review every miss from Exam #1',
-      'For each wrong answer: write WHY your choice was wrong and WHY the right one is right. That sentence is the learning.',
-      'Turn every miss into a flashcard. Re-watch the Messer video for any domain with 3+ misses.'],
-    ['Dion Practice Exam #2 — timed',
-      'Same conditions as #1. Goal: beat your baseline score.',
-      'Compare domain-by-domain with Exam 1. Your two weakest domains become tomorrow\u2019s entire agenda.'],
-    ['Weak-domain deep drill',
-      'ExamCompass free quizzes — only your two weakest domains, repeated until 85%+.',
-      'For every repeat miss, find the exact Messer timestamp covering it and rewatch just that.'],
-    ['PBQ practice day',
-      'Performance-based questions: drag-and-drop, command line sims, network config. These open the real exam — practicing them kills the panic.',
-      'Do every PBQ you can find (Dion includes some). Practice command-line answers by actually typing them in the VM.'],
+  { theme: 'Core 1 Practice Exams', days: [
+    ['Practice Exam #1 — timed, closed book', 'Dion 220-1201 (Udemy) or Messer practice exams. 90 min, real conditions, phone in another room.', 'Record score + misses per domain. Baseline data, not judgment.'],
+    ['Review every miss from #1', 'For each: write why yours was wrong AND why the right one is right. That sentence is the learning.', 'Flashcard every miss. Rewatch the exact Messer video for any domain with 3+ misses.'],
+    ['Practice Exam #2 — timed', 'Same conditions. Goal: beat baseline.', 'Compare by domain vs #1. Two weakest domains = tomorrow entire agenda.'],
+    ['Weak-domain drill', 'ExamCompass 220-1201 + Messer pop quizzes, ONLY your two weakest domains, to 85%+.', 'Repeat-misses: find the exact video section, rewatch at 2x.'],
+    ['PBQ + command-line day', 'PBQs open the real exam - drag-and-drop, network sims, command line. Reps kill panic.', 'Type every command for real in the VM: ipconfig, ping, tracert, nslookup, netstat.'],
   ]},
-  { theme: 'Final Review & Exam', days: [
-    ['Full flashcard sweep',
-      'Every port, acronym, command, and the two memorized sequences (malware removal, troubleshooting method).',
-      'Sort cards into "cold" and "shaky." Cull the cold ones. Tomorrow only shaky cards exist.'],
-    ['Dion Practice Exam #3 — timed',
-      'Final full exam. 85%+ = you are ready, book it if you haven\u2019t. Below = tomorrow targets exactly what missed.',
-      'Same review ritual: why wrong, why right, flashcard it.'],
-    ['Weakest domain — final pass',
-      'Messer videos at 2x on remaining weak topics + 50 questions on those domains only.',
-      'End the day by explaining your weakest topic out loud like you\u2019re teaching a client. If you can teach it, you know it.'],
-    ['Light review + exam logistics',
-      'NO cramming today. Confirm booking, ID requirements, testing-center route or online proctor setup.',
-      'Skim your shaky flashcards once. Pack/prep everything. Sleep 8 hours — sleep is studying.'],
-    ['EXAM DAY',
-      'Walk in calm. 8 weeks of reps are in you. Flag hard questions, come back, PBQs first-pass quickly.',
-      'After: whatever the result, message the group chat (me). Pass = celebrate. Miss = we build the 2-week retake sprint same day.'],
+  { theme: 'Core 1 Final + EXAM', days: [
+    ['Full flashcard sweep', 'Ports, connectors, RAID, acronyms, the 6-step method. Sort cold vs shaky, cull cold.', 'Book the Core 1 exam (Pearson VUE, 220-1201) for Friday if not booked.'],
+    ['Practice Exam #3 — timed', '85%+ = ready. Below = tomorrow targets the exact gaps.', 'Why wrong, why right, flashcard.'],
+    ['Weakest domain final pass', 'Messer at 2x on weak topics + 50 questions on those domains only.', 'Teach your weakest topic out loud like a client asked. Teach it = know it.'],
+    ['Light review + logistics. NO cramming.', 'Confirm booking, two IDs, route or online-proctor system check.', 'One relaxed shaky-card pass. Sleep 8 hours - sleep IS studying.'],
+    ['CORE 1 EXAM DAY (220-1201)', 'Flag hard questions, return later. PBQs: quick first pass, deep second. Six weeks of reps - trust them.', 'Tell me the result. Pass = Core 2 phase-2 plan Monday. Miss = 2-week retake sprint, built same day.'],
   ]},
 ]
 
@@ -165,6 +85,8 @@ const PHIL = ['Read Philippians 1 slowly — mark every mention of joy',
   'Re-read the chapter that hit hardest this week + journal 3 lines']
 
 const STAPLES = (dayIdx) => [
+  { id: 'recall', label: 'Brain dump: YESTERDAY topics (5 min, before anything new)', tag: 'A+',
+    detail: 'Blank page. Write everything you remember from yesterday from memory - no notes. Then check and fill gaps. This 5 minutes is worth more than an hour of rewatching.' },
   { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH',
     detail: `${PHIL[dayIdx]}. Then pray: gratitude first, requests second, one thing you\u2019re surrendering.` },
   { id: 'verse', label: 'Memory verse — Philippians 3', tag: 'FAITH',
@@ -309,6 +231,7 @@ export default function App() {
   return (
     <div style={{ background: C.void, minHeight: '100vh', color: C.snow, fontFamily: "'Inter', ui-sans-serif, system-ui" }}>
       <style>{`
+        .os-shell { max-width: 1240px; margin: 0 auto; padding: 28px 20px 90px; }
         .os-grid { display: block; }
         .os-side { margin-top: 20px; }
         @media (min-width: 980px) {
@@ -395,7 +318,7 @@ export default function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, textAlign: 'center' }}>
                   <div>
                     <div style={{ fontFamily: MONO, fontSize: 26, fontWeight: 700, color: daysToExam <= 7 ? C.rose : C.violetSoft }}>{daysToExam}</div>
-                    <div style={{ fontSize: 10, color: C.muted }}>days to exam</div>
+                    <div style={{ fontSize: 10, color: C.muted }}>days to Core 1</div>
                   </div>
                   <div>
                     <div style={{ fontFamily: MONO, fontSize: 26, fontWeight: 700, color: C.amber }}>🔥{streak}</div>
@@ -427,8 +350,9 @@ export default function App() {
               )}
 
               <SideCard title="Resources">
-                {[['Professor Messer — free A+ course', 'https://www.professormesser.com/free-a-plus-training/220-1101/'],
-                  ['Jason Dion practice exams (Udemy)', 'https://www.udemy.com/user/jasondion/'],
+                {[['Messer 220-1201 Core 1 videos', 'https://www.professormesser.com/free-a-plus-training/220-1201/220-1201-video/220-1201-training-course/'],
+                  ['Messer 220-1201 pop quizzes', 'https://www.professormesser.com/category/free-a-plus-training/220-1201/220-1201-pop-quizzes/'],
+                  ['Jason Dion 220-1201 exams (Udemy)', 'https://www.udemy.com/user/jasondion/'],
                   ['ExamCompass free quizzes', 'https://www.examcompass.com/'],
                   ['VirtualBox (labs)', 'https://www.virtualbox.org/']].map(([l, href]) => (
                   <a key={href} href={href} target="_blank" rel="noopener noreferrer"
