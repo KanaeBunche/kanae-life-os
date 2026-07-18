@@ -6,9 +6,14 @@ import { useState, useEffect, useRef } from 'react'
    ═══════════════════════════════════════════════════════════ */
 
 const C = {
-  void: '#0A0A0F', surface: '#12121C', border: '#26263A', borderSoft: '#1E1E28',
-  violet: '#7B5CF0', violetSoft: '#A78BFA', snow: '#F4F4F8', muted: '#8B8BA3',
-  green: '#34D399', amber: '#FBBF24', rose: '#FB7185', blue: '#60A5FA', orange: '#FF7A29',
+  void: '#FFF5F8',        /* page — soft pink-white */
+  surface: '#FFFFFF',     /* cards */
+  border: '#F3CFE0', borderSoft: '#F9E4EE',
+  violet: '#EC4899',      /* primary pink */
+  violetSoft: '#DB2777',  /* deep pink accents */
+  snow: '#2A1220',        /* ink text */
+  muted: '#9D7A8C',
+  green: '#059669', amber: '#D97706', rose: '#E11D48', blue: '#2563EB', orange: '#EA580C',
 }
 const MONO = "ui-monospace, 'JetBrains Mono', monospace"
 
@@ -84,42 +89,63 @@ const PHIL = ['Read Philippians 1 slowly — mark every mention of joy',
   'Read Philippians 4 — vv. 6–8, anxiety and thought life',
   'Re-read the chapter that hit hardest this week + journal 3 lines']
 
-const STAPLES = (dayIdx) => [
-  { id: 'recall', label: 'Brain dump: YESTERDAY topics (5 min, before anything new)', tag: 'A+',
-    detail: 'Blank page. Write everything you remember from yesterday from memory - no notes. Then check and fill gaps. This 5 minutes is worth more than an hour of rewatching.' },
+const CRAFT_WEEKS = [
+  ['Phase 1 — JavaScript basics with ChatGPT as tutor', 'Tell ChatGPT: "Teach me [variables/functions/loops] with a short explanation, then give me 3 exercises. Do NOT show solutions until I try." YOU type every line in a real file and run it. Then ask it to quiz you on what you just did.'],
+  ['Phase 1 — Objects, arrays & methods', 'Same method: ChatGPT teaches + gives exercises on objects, map/filter/reduce. You type, run, break, fix. End with: "Quiz me like a junior dev interviewer on arrays." One LeetCode Easy, talking out loud.'],
+  ['Phase 2 — Async: promises & async/await', 'ChatGPT: "Explain promises simply, then give me exercises using fetch with a free API." Hand-type everything. Ask it to explain the event loop, then explain it BACK to it and have it grade you. + 1 LeetCode Easy.'],
+  ['Phase 3 — The DOM (no framework)', 'ChatGPT: "Give me 3 small DOM projects using only querySelector and addEventListener" (counter, todo, tabs). Build them in one plain HTML file. When stuck, ask for a HINT, never the answer. + 1 LeetCode Easy.'],
+  ['Phase 4 — React from first principles', 'ChatGPT: "Quiz me on why state re-renders, hook rules, and keys — interview style." Then build a tiny component from scratch, no copying. You already USE React daily; this phase is about explaining it. + 1 LeetCode Easy.'],
+  ['Phase 5 — Node + Express by hand', 'ChatGPT: "Walk me through building an Express CRUD API step by step, one step at a time, and wait for my code before continuing." Blank folder, you type it all, test with curl. + 1 LeetCode Easy.'],
+  ['Phase 6 — SQL', 'Supabase SQL editor. ChatGPT: "Give me SQL exercises: SELECT with JOINs, INSERT, UPDATE, an index, an RLS policy." Type by hand on a scratch table, paste results back for it to check. + 1 LeetCode Easy.'],
+  ['Phase 7 — Explain your own code + mock interviews', 'Open ThinkWork or the portal, one file a day: explain every line out loud. Then ChatGPT: "Interview me for a junior dev role — ask me to walk through a project, then follow up." Timed, out loud, daily.'],
+]
+
+const STAPLES = (dayIdx, week) => [
+  { id: 'recall', label: 'Brain dump: YESTERDAY (5 min, before anything new)', tag: 'A+',
+    detail: 'Blank page. Write everything you remember from yesterday from memory - no notes. Then check and fill gaps. This 5 minutes beats an hour of rewatching.' },
   { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH',
-    detail: `${PHIL[dayIdx]}. Then pray: gratitude first, requests second, one thing you\u2019re surrendering.` },
+    detail: PHIL[dayIdx] + ' Then pray: gratitude first, requests second, one thing you are surrendering.' },
   { id: 'verse', label: 'Memory verse — Philippians 3', tag: 'FAITH',
-    detail: 'Add one new verse, recite all previous from memory. Say it out loud 5x, write it once. Weekly quiz Saturday.' },
+    detail: 'Add one new verse, recite all previous from memory. Out loud 5x, write it once. Weekly quiz on day 6.' },
   { id: 'workout', label: 'Workout', tag: 'HEALTH',
-    detail: SPLIT[dayIdx] + '. 45–60 min max. Log your top set.' },
+    detail: SPLIT[dayIdx] + ' 45-60 min max. Log your top set.' },
+  { id: 'food', label: 'Whole foods only', tag: 'HEALTH',
+    detail: 'EVERY meal today: eggs, fruit, meat, rice, oats, vegetables, water. Nothing from a wrapper with 15 ingredients. Protein each meal. Check at end of day only if ALL meals were whole food - honestly.' },
   { id: 'lesson', label: null, tag: 'A+', detail: null },
   { id: 'lab', label: null, tag: 'LAB', detail: null },
   { id: 'questions', label: '25 practice questions', tag: 'A+',
-    detail: 'Dion or ExamCompass, on TODAY\u2019S topic. Review every miss immediately — the review is where the points come from.' },
-  { id: 'jobs', label: 'Apply to 10 jobs', tag: 'CAREER',
-    detail: 'IT support / help desk / jr dev. LinkedIn + Indeed + company sites. Tailor the resume only when the role deserves it. Log follow-ups due.' },
-  { id: 'content', label: 'Content task (scheduled days only)', tag: 'BIZ',
-    detail: 'Tue/Thu: post the scheduled reel to IG + TikTok + Shorts. Other days: skip guilt-free — do NOT create content to feel busy.' },
-  { id: 'dms', label: '10 targeted DMs', tag: 'BIZ',
-    detail: 'NYC businesses matching a portfolio site. Name something specific about THEIR business, link the matching build, one low-pressure question. ≤60 min.' },
+    detail: 'Right after the videos while fresh: Messer pop quizzes or Dion 220-1201, TODAY topic only. Review every miss immediately - the review is where the points come from.' },
+  { id: 'craft', label: `Coding practice: ${CRAFT_WEEKS[week][0]} — 30-45 min`, tag: 'JS',
+    detail: CRAFT_WEEKS[week][1] },
+  { id: 'jobs', label: 'Apply to 10 jobs (IT + junior dev)', tag: 'CAREER',
+    detail: 'IT support / help desk / jr dev. LinkedIn + Indeed + company sites, weighted toward postings under 100 applicants. Message one human at one company per day. Log follow-ups due.' },
+  { id: 'content', label: 'One chill green-screen video (optional, no pressure)', tag: 'CONTENT',
+    detail: 'Talk about whatever is on your mind - what you learned today, the job hunt, faith, a take. Green screen, chill energy, no script, under 90 sec. Post to TikTok + Shorts + IG or save as a draft. If the day is heavy, skip guilt-free.' },
   { id: 'evening', label: 'Evening: 30-question light review', tag: 'A+',
     detail: 'Mixed topics, untimed, relaxed. Wrong answers become tomorrow-morning flashcards. Then close everything.' },
 ]
-const SATURDAY = [
-  { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH', detail: 'Longer session — re-read this week\u2019s chapters. Weekly memory-verse quiz: write everything memorized so far from scratch.' },
-  { id: 'exam', label: 'Full timed practice exam', tag: 'A+', detail: '90 questions, 90 minutes, real conditions. Track your weekly score trend — it should climb.' },
-  { id: 'review', label: 'Review every incorrect answer', tag: 'A+', detail: 'Why wrong + why right, in writing, for every single miss. Flashcard the repeat offenders.' },
-  { id: 'batch', label: 'Batch record + edit reels', tag: 'BIZ', detail: 'Record BOTH of next week\u2019s reels in one sitting using the master template. Edit, caption, schedule Tue + Thu.' },
-  { id: 'workout', label: 'Workout or active recovery', tag: 'HEALTH', detail: 'Lift, long walk, or mobility — move for 30+ min, keep the body in the habit.' },
+const SATURDAY = (week) => week < 5 ? [
+  { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH', detail: 'Longer session - re-read this week. Memory-verse quiz: write everything memorized so far from scratch.' },
+  { id: 'cumquiz', label: 'Cumulative quiz — ONLY topics covered so far', tag: 'A+', detail: '40 questions total from ExamCompass topic quizzes + Messer pop quizzes, ONLY on sections you have already watched. This is review, not an exam - you should score decently, and every miss shows exactly what to re-dump.' },
+  { id: 'review', label: 'Review every miss + brain-dump the week', tag: 'A+', detail: 'Why wrong + why right for each miss. Then one blank page: dump EVERYTHING from this whole week from memory. Check against notes, fill gaps.' },
+  { id: 'mealprep', label: 'Meal prep for the week', tag: 'HEALTH', detail: 'Cook the week: eggs, protein, rice, cut fruit. Whole-food eating survives busy days only if it is already in the fridge.' },
+  { id: 'batch', label: 'Batch 2-3 green-screen videos (chill)', tag: 'CONTENT', detail: 'Record a few casual talking videos in one sitting. Raw is the style. Skip if the week was heavy.' },
+  { id: 'workout', label: 'Workout or active recovery', tag: 'HEALTH', detail: 'Lift, long walk, or mobility - 30+ min.' },
+] : [
+  { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH', detail: 'Longer session - re-read this week. Memory-verse quiz: write everything memorized so far from scratch.' },
+  { id: 'exam', label: 'Full timed practice exam (you have now seen everything)', tag: 'A+', detail: '90 questions, 90 minutes, real conditions. Track the weekly score - it should climb.' },
+  { id: 'review', label: 'Review every incorrect answer', tag: 'A+', detail: 'Why wrong + why right, in writing, for every miss. Flashcard repeat offenders.' },
+  { id: 'mealprep', label: 'Meal prep for the week', tag: 'HEALTH', detail: 'Cook the week: eggs, protein, rice, cut fruit.' },
+  { id: 'batch', label: 'Batch 2-3 green-screen videos (chill)', tag: 'CONTENT', detail: 'Casual talking videos, one sitting. Skip if heavy.' },
+  { id: 'workout', label: 'Workout or active recovery', tag: 'HEALTH', detail: 'Lift, long walk, or mobility - 30+ min.' },
 ]
 const SUNDAY = [
-  { id: 'church', label: 'Church', tag: 'FAITH', detail: 'Be present. Take one note from the sermon to carry into the week.' },
-  { id: 'rest', label: 'Rest — actually rest', tag: 'HEALTH', detail: 'No study, no editing, no DMs. Rest is part of the plan, not a break from it.' },
-  { id: 'plan', label: 'Plan the week', tag: 'PLAN', detail: 'Confirm Tue/Thu posts are scheduled, glance at next week\u2019s lessons, prep anything the labs need (VM ready, etc).' },
+  { id: 'church', label: 'Church', tag: 'FAITH', detail: 'Be present. One note from the sermon to carry into the week.' },
+  { id: 'rest', label: 'Rest — actually rest', tag: 'HEALTH', detail: 'No study, no editing, no applications. Rest is part of the plan.' },
+  { id: 'plan', label: 'Plan the week', tag: 'PLAN', detail: 'Glance at next week lessons, prep labs (VM ready), confirm groceries for whole-food eating.' },
 ]
 
-const TAG_COLOR = { FAITH: C.amber, HEALTH: C.green, 'A+': C.violet, LAB: C.violetSoft, CAREER: C.blue, BIZ: C.orange, PLAN: C.muted }
+const TAG_COLOR = { FAITH: C.amber, HEALTH: C.green, 'A+': C.violet, LAB: C.violetSoft, CAREER: C.blue, JS: '#7C3AED', CONTENT: C.orange, PLAN: C.muted }
 
 const iso = (d) => d.toISOString().slice(0, 10)
 const todayStr = () => iso(new Date())
@@ -132,12 +158,12 @@ function planFor(dateStr, startDate) {
   if (diff < 0) return { status: 'before' }
   const week = Math.floor(diff / 7)
   if (week > 7) return { status: 'after' }
-  const dow = date.getDay()
-  if (dow === 0) return { status: 'ok', week, items: SUNDAY, theme: WEEKS[week].theme }
-  if (dow === 6) return { status: 'ok', week, items: SATURDAY, theme: WEEKS[week].theme }
-  const dayIdx = dow - 1
+  const dayInWeek = diff % 7            // 0-4 study, 5 practice-exam day, 6 rest
+  if (dayInWeek === 6) return { status: 'ok', week, items: SUNDAY, theme: WEEKS[week].theme }
+  if (dayInWeek === 5) return { status: 'ok', week, items: SATURDAY(week), theme: WEEKS[week].theme }
+  const dayIdx = dayInWeek
   const [lesson, lessonDetail, labDetail] = WEEKS[week].days[dayIdx]
-  const items = STAPLES(dayIdx).map(s =>
+  const items = STAPLES(dayIdx, week).map(s =>
     s.id === 'lesson' ? { ...s, label: `Lesson: ${lesson}`, detail: lessonDetail }
     : s.id === 'lab' ? { ...s, label: 'Hands-on lab', detail: labDetail }
     : s)
@@ -185,8 +211,8 @@ export default function App() {
           Every day tells you exactly what to do — the A+ lesson, the lab, the applications, the DMs, the verse, the workout — with full instructions on each.
         </p>
         <div style={{ textAlign: 'left', background: C.surface, border: `1px solid ${C.borderSoft}`, borderRadius: 14, padding: 18 }}>
-          <label style={{ fontSize: 11, color: C.muted, display: 'block', marginBottom: 6 }}>Bootcamp start date (a Monday)</label>
-          <input type="date" defaultValue={nextMonday()} id="sd"
+          <label style={{ fontSize: 11, color: C.muted, display: 'block', marginBottom: 6 }}>Bootcamp start date</label>
+          <input type="date" defaultValue={todayStr()} id="sd"
             style={{ width: '100%', background: C.void, border: `1px solid ${C.border}`, borderRadius: 8, padding: 10, color: C.snow, fontSize: 14, boxSizing: 'border-box' }} />
           <button onClick={() => { const v = document.getElementById('sd').value; if (v) setData(d => ({ ...d, startDate: v })) }}
             style={{ width: '100%', marginTop: 14, background: C.violet, color: '#fff', border: 'none', borderRadius: 10, padding: 13, fontSize: 14, fontWeight: 700, cursor: 'pointer' }}>
@@ -340,7 +366,7 @@ export default function App() {
                       <div key={di} onClick={() => setViewDate(ds)}
                         style={{ display: 'flex', justifyContent: 'space-between', gap: 8, padding: '8px 0', borderBottom: di < 4 ? `1px solid ${C.borderSoft}` : 'none', cursor: 'pointer' }}>
                         <span style={{ fontSize: 12, color: isToday ? C.violetSoft : dn === tt && tt > 0 ? C.muted : C.snow, fontWeight: isToday ? 700 : 400 }}>
-                          <span style={{ fontFamily: MONO, fontSize: 10, color: C.violetSoft }}>{['Mon','Tue','Wed','Thu','Fri'][di]}</span> {lesson}
+                          <span style={{ fontFamily: MONO, fontSize: 10, color: C.violetSoft }}>D{di + 1}</span> {lesson}
                         </span>
                         <span style={{ fontFamily: MONO, fontSize: 10, color: dn === tt && tt > 0 ? C.green : C.muted, flexShrink: 0 }}>{dn}/{tt}</span>
                       </div>
@@ -354,7 +380,9 @@ export default function App() {
                   ['Messer 220-1201 pop quizzes', 'https://www.professormesser.com/category/free-a-plus-training/220-1201/220-1201-pop-quizzes/'],
                   ['Jason Dion 220-1201 exams (Udemy)', 'https://www.udemy.com/user/jasondion/'],
                   ['ExamCompass free quizzes', 'https://www.examcompass.com/'],
-                  ['VirtualBox (labs)', 'https://www.virtualbox.org/']].map(([l, href]) => (
+                  ['javascript.info (JS craft)', 'https://javascript.info/'],
+                  ['LeetCode Easy problems', 'https://leetcode.com/problemset/?difficulty=EASY'],
+                  ['VirtualBox / UTM (labs)', 'https://www.virtualbox.org/']].map(([l, href]) => (
                   <a key={href} href={href} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'block', fontSize: 12, color: C.violetSoft, textDecoration: 'none', padding: '6px 0', borderBottom: `1px solid ${C.borderSoft}` }}>
                     {l} ↗
@@ -365,8 +393,8 @@ export default function App() {
 
               <SideCard title="Priority order">
                 <div style={{ fontSize: 12, lineHeight: 2, color: C.snow }}>
-                  1. Time with God<br/>2. CompTIA A+<br/>3. Job applications<br/>4. Workout<br/>5. Koded by Kanae content + DMs<br/>
-                  <span style={{ color: C.muted, fontSize: 11 }}>6. Everything else</span>
+                  1. Time with God<br/>2. CompTIA A+<br/>3. Job applications + interviews<br/>4. JS interview craft<br/>5. Workout + whole foods<br/>
+                  <span style={{ color: C.muted, fontSize: 11 }}>6. Chill content · 7. Everything else</span>
                 </div>
               </SideCard>
             </div>
