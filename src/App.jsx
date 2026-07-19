@@ -19,61 +19,33 @@ const MONO = "ui-monospace, 'JetBrains Mono', monospace"
 
 /* ─── 8-week curriculum: [lesson, lesson detail, lab detail] ─── */
 const WEEKS = [
-  { theme: 'Mobile Devices + Networking I', days: [
-    ['Videos: 1.1 Laptop Hardware (16:42) + intro', 'ONE video at a time. Watch "How to Pass Your A+ Exams" (15:22) at 1.5x, then "Laptop Hardware" (16:42) normally. AFTER the laptop video: close everything, blank page, write everything you remember (2 min). THEN check notes and fill gaps in a different color.', 'Run powercfg /batteryreport on a laptop and read it. List which parts of YOUR laptop are user-replaceable. Then 5 Messer pop-quiz questions on mobile devices.'],
-    ['Videos: 1.2 Connecting Mobile Devices (6:08) + Accessories (7:18)', 'Two SHORT videos. Same loop each one: watch -> blank-page brain dump -> check notes -> fill gaps. Know: USB/Lightning/NFC/Bluetooth, hotspots, tethering, docks.', 'iPhone lab: pair a Bluetooth device fresh, set up a hotspot and connect your laptop through it. Then quiz yourself out loud: every way a phone can connect.'],
-    ['Videos: 1.3 Mobile Networks (10:14) + MDM (8:31)', 'Watch -> dump -> check, one video at a time. Know: 3G/4G/5G, SIM/eSIM, GPS, MDM, BYOD vs COPE.', 'Find cellular + eSIM settings on your iPhone. Explain MDM out loud like a client asked "why does my work phone have a profile on it?"'],
-    ['Videos: 2.1 Introduction to IP (19:04)', 'ONE video today - it is dense. Watch in two halves with a brain dump after each half. Know: IP, TCP vs UDP, how port numbers work.', 'START the ports flashcard deck: FTP 20/21, SSH 22, Telnet 23, SMTP 25, DNS 53, DHCP 67/68, HTTP 80, POP3 110, IMAP 143, HTTPS 443, SMB 445, RDP 3389. Run it twice. This deck is daily now.'],
-    ['Videos: 2.1 Common Ports (12:52)', 'Watch AFTER running your ports deck first. The video will feel like review - that is the point. Dump, check, fill gaps.', 'Ports deck until 100% once. Then in Terminal: ping a site and read every field out loud.'],
+  { theme: 'Baseline + Math Foundations', days: [
+    ['FULL diagnostic practice test', 'Take a complete timed ASVAB practice test TODAY (March2Success - free, military-made - or ASVAB.com practice). No studying first. This finds your real weak spots so the month attacks the right things.', 'Score every section. Write your AFQT-section results (AR, MK, WK, PC) biggest-gap first. That ranked list IS your month.'],
+    ['Arithmetic Reasoning: word problems I', 'AR is word problems: rates, work, age, money. Learn the translate-to-equation method: underline numbers, name the unknown, write the equation BEFORE solving. 20 problems, untimed, method over speed.', 'Redo every miss by writing the equation first, then solving. Say the translation out loud: "per means divide, of means multiply."'],
+    ['Math Knowledge: fractions, decimals, percents', 'Drill conversions cold: fraction->decimal->percent both ways, adding/multiplying fractions, percent change. These appear constantly on BOTH math sections.', '30 mixed conversion problems. Anything slow gets 10 more. End: teach percent-change out loud.'],
+    ['Ratios, proportions & rates', 'Cross-multiplication for proportions, unit rates, scale problems. AR loves "if 3 workers take 6 hours..." setups.', '20 problems. Then 5 AR word problems mixing today + yesterday.'],
+    ['Algebra I: solving for x', 'One and two-step equations, distributing, combining like terms, plugging into expressions. MK bread and butter.', '25 equations. Miss = redo the same TYPE three times. Vocab deck check-in (see verbal task).'],
   ]},
-  { theme: 'Networking II', days: [
-    ['Videos: 2.2 Wireless (7:16) + 2.3 Network Services (17:03)', 'Short one first, then services in two halves with dumps. Know: 802.11 bands/channels, RFID, NFC, DNS, DHCP, proxies, load balancers, IoT.', 'Router lab: log into your real router, identify 2.4 vs 5GHz + channels, view connected devices. List every network service running in your home.'],
-    ['Videos: 2.4 DNS Configuration (18:18)', 'One dense video, two halves, dump after each. Know records: A, AAAA, CNAME, MX, TXT + what DKIM/SPF/DMARC do.', 'nslookup 3 domains, identify record types. Write the record types from memory. Ports deck.'],
-    ['Videos: 2.4 DHCP (10:46) + VLANs/VPNs (7:32)', 'Watch -> dump -> check each. Know: DORA lease process, scopes, reservations, why VLANs segment, client vs site-to-site VPN.', 'VM lab: ipconfig /release then /renew - narrate DORA while it happens. Then explain a VLAN out loud using your router as the example.'],
-    ['Videos: 2.5 Network Devices (18:01)', 'Two halves + dumps. Know: router vs switch vs AP vs firewall vs modem/ONT, managed vs unmanaged, PoE, NIC.', 'Draw YOUR home network from wall to devices, labeling every device with its exam term. From memory, second pass.'],
-    ['Videos: 2.6 IPv4/IPv6 (8:45) + Assigning IPs (8:26)', 'Watch -> dump -> check each. Know: private ranges (10.x / 172.16 / 192.168), APIPA 169.254 = "DHCP failed", static vs dynamic, IPv6 basics.', 'VM lab: set a static IP/mask/gateway/DNS, confirm internet, break the gateway on purpose, observe what fails. Ports deck.'],
+  { theme: 'Math II + Verbal Sharpening', days: [
+    ['Algebra II: exponents, roots & inequalities', 'Exponent rules, square roots, simple inequalities, FOIL basics. MK tests these directly.', '25 problems mixed with last week\u2019s algebra. Timed: 15 problems in 15 min.'],
+    ['Geometry: angles, area & perimeter', 'Triangles (angles sum 180), area/perimeter of rectangles-triangles-circles, Pythagorean theorem, volume of boxes/cylinders.', 'Draw and solve 20 geometry problems. Memorize the formula sheet - write it from memory twice.'],
+    ['Word problems II: mixed AR under time', 'Combine everything: rates, percents, ratios, algebra in word form. Start timing: ~1 min per problem.', '20 AR problems in 25 minutes. Review misses with the write-the-equation method.'],
+    ['Word Knowledge deep day', 'WK is vocab: synonyms + words in context. Learn prefix/root/suffix decoding (bene=good, mal=bad, -ology=study of). Your BA gives you a head start - sharpen it.', '50 flashcard words + 20 WK practice questions. Miss = card. Roots list from memory.'],
+    ['Paragraph Comprehension day', 'PC: main idea, inference, detail, author\u2019s purpose. Strategy: read the QUESTION first, then hunt. Never answer from outside knowledge - only what the passage says.', '15 PC passages timed. For each miss, underline the exact sentence that proves the right answer.'],
   ]},
-  { theme: 'Networking wrap + Hardware I', days: [
-    ['Videos: 2.7 Connection Types (7:33) + Network Types (4:46)', 'Two short ones. Know: fiber/cable/DSL/satellite/cellular/WISP, LAN/WAN/PAN/SAN/WLAN.', 'Identify YOUR internet connection type, trace modem/ONT -> router -> devices. tracert 2 sites, read each hop out loud.'],
-    ['Videos: 2.8 Network Tools (11:48)', 'One video. Know by sight: crimper, punch-down, tone generator, cable tester, loopback plug, Wi-Fi analyzer, tap.', 'Image quiz: google each tool, cover the name, identify from photo alone. Then 10 Messer networking pop-quiz questions.'],
-    ['Videos: 3.1 Display Types (9:13) + Attributes (12:01)', 'Watch -> dump -> check each. Know: IPS/TN/VA, OLED, Mini LED, digitizer, inverter, resolution, refresh rate, color gamut.', 'Settings -> Display -> Advanced on your machines: record exact resolution + refresh rate. Ports deck.'],
-    ['Videos: 3.2 Network Cables (12:14) + 568A/B (5:41)', 'Watch -> dump -> check. Know: Cat ratings, UTP vs STP, plenum, direct burial, T568A/B order.', 'Draw the T568B color order from memory 3 times. Inspect a real Ethernet cable end - which standard?'],
-    ['Videos: 3.2 Fiber (4:14) + Fiber Connectors (2:49) + Peripheral Cables (8:59)', 'Three short ones, dump after each. Know: multimode vs single-mode, SC/ST/LC, USB gens + speeds, USB-C, Thunderbolt.', 'Port hunt: name the exact standard + max speed of every port on your machines, from memory. Weekly ports quiz - written, from scratch.'],
+  { theme: 'Technical Sections + Mixed Timed Work', days: [
+    ['Electronics Information', 'EI feeds IT line scores. Learn: current/voltage/resistance (Ohm\u2019s law V=IR), series vs parallel, AC/DC, common components (resistor, capacitor, diode, transistor), wire gauge basics.', '20 EI questions. Build a one-page cheat sheet from memory: Ohm\u2019s law triangle + component functions.'],
+    ['General Science speed-run', 'GS: basic bio, chemistry, physics, earth science. Wide but shallow - skim a GS review chapter, note anything unfamiliar.', '30 GS questions. Only study topics you actually missed - do not rabbit-hole.'],
+    ['Mechanical Comprehension basics', 'MC: levers, pulleys, gears, pressure, springs. Intuition + a few formulas. Helps line scores for several technical jobs.', '20 MC questions. For pulleys/gears misses, watch one short explainer and redo.'],
+    ['Full MATH sections - timed, real conditions', 'AR (36 min) + MK (24 min or CAT timing) back to back, closed book. This is the money day - math moves your AFQT most.', 'Score it. Every miss: classify by type (fractions? geometry? translation?). Tomorrow drills the top 2 types.'],
+    ['Weakest-type drill + verbal maintenance', 'Attack yesterday\u2019s top 2 miss-types with 20 problems each. Then 20 WK + 5 PC to keep verbal warm.', 'End with 10 mixed math problems, timed. Vocab deck.'],
   ]},
-  { theme: 'Hardware II — Guts of the Machine', days: [
-    ['Videos: 3.2 Video (7:03) + Storage Cables (4:10) + Adapters (4:05) + Copper Connectors (8:33)', 'Four short videos, dump after each pair. Know: HDMI/DP/DVI/VGA, SATA/eSATA, RJ11 vs RJ45, F-connector, Molex.', 'Connector image quiz: identify RJ11, RJ45, F, SC, LC, Molex, SATA, USB-C from photos, names covered.'],
-    ['Videos: 3.3 Memory Overview (8:38) + Memory Tech (8:44)', 'Watch -> dump -> check each. Know: DIMM vs SO-DIMM, DDR3/4/5, ECC, parity, multi-channel, virtual memory.', 'Task Manager -> Memory on host + VM: record speed/slots/form factor. Teach dual-channel out loud.'],
-    ['Videos: 3.4 Storage Devices (14:54) + RAID (8:08)', 'Storage in two halves + dump, RAID whole + dump. Know: HDD/SSD/NVMe speeds, M.2, RAID 0/1/5/6/10 and what each survives.', 'Disk Management lab in VM: add disk, initialize, partition, format, shrink, extend. Self-quiz: which RAID survives 2 failures?'],
-    ['Videos: 3.5 Form Factors (6:18) + Expansion Slots (7:14) + Connections (5:45) + Compatibility (3:29)', 'Four short, dump after each pair. Know: ATX/mATX/ITX, PCIe lanes, headers, Intel vs AMD sockets.', 'Labeled board photo: locate chipset, RAM slots, M.2, SATA, 24-pin, CPU power, front-panel headers. Second pass from memory.'],
-    ['Videos: 3.5 The BIOS (4:42) + BIOS Settings (19:29)', 'BIOS Settings in two halves with dumps. Know: UEFI, boot order, secure boot, BIOS passwords, USB permissions.', 'Reboot into your real UEFI: find boot order, secure boot, TPM status, virtualization toggle. Screenshot, change nothing.'],
-  ]},
-  { theme: 'Hardware wrap + Virtualization + Cloud', days: [
-    ['Videos: 3.5 HSM/TPM (7:47) + CPU Features (5:13) + Expansion Cards (6:17)', 'Three short, dump each. Know: TPM vs HSM, 32 vs 64-bit, ARM, cores, sound/video/capture/NIC cards.', 'msinfo32: record your CPU cores/threads/architecture + TPM version. Ports deck.'],
-    ['Videos: 3.5 Cooling (6:37) + 3.6 Computer Power (15:31)', 'Power in two halves + dumps. Know: heat sinks, thermal paste, liquid cooling, PSU wattage, redundant PSUs, 80 Plus.', 'Look up your machines PSU/adapter wattage. Scenario out loud: PC randomly restarts under load - walk your diagnosis.'],
-    ['Videos: 3.7 Multifunction Devices (14:25) + 3.8 Laser Maintenance (7:30)', 'Watch -> dump -> check each. Know: printer languages, secure/badge printing, laser process steps, toner, maintenance kits.', 'VM lab: install a printer (PDF printer counts), share it, print test page, pause queue, clear a stuck job.'],
-    ['Videos: 3.8 Inkjet + Thermal + Impact (all 6 shorts, ~25 min)', 'Six tiny videos - dump after each TYPE (inkjet pair, thermal pair, impact pair).', 'One-page chart from memory: laser vs inkjet vs thermal vs impact - how it prints, consumables, failures, where you see it (receipts = thermal).'],
-    ['Videos: 4.1 Virtualization (5:45 + 11:23) + 4.2 Cloud (9:48 + 6:50)', 'Four videos, dump after each pair. Know: type 1 vs 2 hypervisors, VDI, containers, IaaS/PaaS/SaaS, elasticity, multitenancy.', 'Snapshot the VM, break it, restore it. Map 5 services you use (Vercel, Supabase, GitHub, iCloud, Gmail) to IaaS/PaaS/SaaS out loud.'],
-  ]},
-  { theme: 'Troubleshooting — Core 1 finish', days: [
-    ['Videos: 5.1 Troubleshooting Hardware (25:15)', 'Two halves + dumps. MEMORIZE the 6-step method - it opens every scenario question. Know: POST, beep codes, BSoD, no power, overheating.', 'Write the 6 steps from memory. Talk through: no POST, random shutdowns, loud fan + slow.'],
-    ['Videos: 5.2 Storage (17:04) + start 5.3', 'Storage in two halves + dumps. Know: grinding = dying drive, not recognized, corruption, RAID failures, S.M.A.R.T.', 'VM: run chkdsk, check disk status (wmic diskdrive get status). Narrate a "drive not recognized" diagnosis.'],
-    ['Videos: 5.3 Displays (18:52)', 'Two halves + dumps. Know: input source, projector bulbs, fuzzy image = wrong resolution, burn-in, dead pixels.', 'Write step-by-step for: external monitor blank, fuzzy at native res, intermittent flicker.'],
-    ['Videos: 5.4 Mobile (17:52) + 5.5 Networks (15:14)', 'Alternate: video -> dump -> 5 questions -> next video. Know: battery swelling, liquid damage, digitizer drift, APIPA, jitter, port flapping, latency.', 'VM: sabotage networking (bad IP, wrong DNS), repair with only ipconfig/ping/nslookup, narrating the ping-outward method.'],
-    ['Videos: 5.6 Printers (11:54) — ALL 63 DONE', 'Last video. Then skim the whole course index and mark anything foggy for 2x rewatch.', 'services.msc: restart Print Spooler. 30 min of Messer 220-1201 pop quizzes. Celebrate - content phase complete.'],
-  ]},
-  { theme: 'Core 1 Practice Exams', days: [
-    ['Practice Exam #1 — timed, closed book', 'Dion 220-1201 (Udemy) or Messer practice exams. 90 min, real conditions, phone in another room.', 'Record score + misses per domain. Baseline data, not judgment.'],
-    ['Review every miss from #1', 'For each: write why yours was wrong AND why the right one is right. That sentence is the learning.', 'Flashcard every miss. Rewatch the exact Messer video for any domain with 3+ misses.'],
-    ['Practice Exam #2 — timed', 'Same conditions. Goal: beat baseline.', 'Compare by domain vs #1. Two weakest domains = tomorrow entire agenda.'],
-    ['Weak-domain drill', 'ExamCompass 220-1201 + Messer pop quizzes, ONLY your two weakest domains, to 85%+.', 'Repeat-misses: find the exact video section, rewatch at 2x.'],
-    ['PBQ + command-line day', 'PBQs open the real exam - drag-and-drop, network sims, command line. Reps kill panic.', 'Type every command for real in the VM: ipconfig, ping, tracert, nslookup, netstat.'],
-  ]},
-  { theme: 'Core 1 Final + EXAM', days: [
-    ['Full flashcard sweep', 'Ports, connectors, RAID, acronyms, the 6-step method. Sort cold vs shaky, cull cold.', 'Book the Core 1 exam (Pearson VUE, 220-1201) for Friday if not booked.'],
-    ['Practice Exam #3 — timed', '85%+ = ready. Below = tomorrow targets the exact gaps.', 'Why wrong, why right, flashcard.'],
-    ['Weakest domain final pass', 'Messer at 2x on weak topics + 50 questions on those domains only.', 'Teach your weakest topic out loud like a client asked. Teach it = know it.'],
-    ['Light review + logistics. NO cramming.', 'Confirm booking, two IDs, route or online-proctor system check.', 'One relaxed shaky-card pass. Sleep 8 hours - sleep IS studying.'],
-    ['CORE 1 EXAM DAY (220-1201)', 'Flag hard questions, return later. PBQs: quick first pass, deep second. Six weeks of reps - trust them.', 'Tell me the result. Pass = Core 2 phase-2 plan Monday. Miss = 2-week retake sprint, built same day.'],
+  { theme: 'Full Tests + Test Day', days: [
+    ['Full practice ASVAB #2 - timed', 'Complete test, real conditions, phone away. Compare every section to your Day 1 diagnostic - the growth is the proof.', 'Review every miss: why wrong, why right. Two weakest areas become tomorrow.'],
+    ['Weak-area surgical day', 'Only the two weakest sections from yesterday. Drills + targeted review, nothing else.', '30 questions per weak section. Out-loud explanations for every miss.'],
+    ['Full practice ASVAB #3 - timed', 'Last full test. AFQT sections are what count most - AR, MK, WK, PC. You want stable-or-climbing scores across the three tests.', 'Light review of misses only. If scores support your target job, confirm test date with the recruiter.'],
+    ['Light review + logistics. NO cramming.', 'Formula sheet from memory once. Roots list once. Confirm: test time, location (MEPS or recruiter-proctored), what to bring, sleep plan.', 'Prep everything tonight. 8 hours of sleep - sleep is score points.'],
+    ['ASVAB TEST DAY', 'Pace yourself: never camp on one question - eliminate, pick, move. Math sections: write the equation. Verbal: answer only from the passage.', 'After: tell me your AFQT + line scores. Then we make sure the IT job is IN THE CONTRACT before anything gets signed.'],
   ]},
 ]
 
@@ -102,42 +74,34 @@ const CRAFT_WEEKS = [
 
 const STAPLES = (dayIdx, week) => [
   { id: 'recall', label: 'Brain dump: YESTERDAY (5 min, before anything new)', tag: 'A+',
-    detail: 'Blank page. Write everything you remember from yesterday from memory - no notes. Then check and fill gaps. This 5 minutes beats an hour of rewatching.' },
+    detail: 'Blank page: every formula, method, and word you remember from yesterday. Then check and fill gaps. This is how a month is enough.' },
   { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH',
     detail: PHIL[dayIdx] + ' Then pray: gratitude first, requests second, one thing you are surrendering.' },
   { id: 'verse', label: 'Memory verse — Philippians 3', tag: 'FAITH',
     detail: 'Add one new verse, recite all previous from memory. Out loud 5x, write it once. Weekly quiz on day 6.' },
-  { id: 'workout', label: 'Workout', tag: 'HEALTH',
-    detail: SPLIT[dayIdx] + ' 45-60 min max. Log your top set.' },
-  { id: 'food', label: 'Whole foods only', tag: 'HEALTH',
-    detail: 'EVERY meal today: eggs, fruit, meat, rice, oats, vegetables, water. Nothing from a wrapper with 15 ingredients. Protein each meal. Check at end of day only if ALL meals were whole food - honestly.' },
+  { id: 'workout', label: 'PT prep workout', tag: 'HEALTH',
+    detail: ['Run day: 2 miles for time - log it. Then pushup + situp/plank sets.','Strength: upper push + core. Pushup max test - log the number.','Run day: intervals - 6x400m hard. Situps/plank.','Strength: lower + pullups or rows. Core.','Run day: easy 2-3 miles conversational. Pushups + situps.'][dayIdx] + ' PT standards are part of the door - treat the run like a graded section.' },
+  { id: 'food', label: 'Whole foods only — every meal', tag: 'HEALTH',
+    detail: 'Eggs, fruit, meat, rice, oats, vegetables, water. Check only if ALL meals were whole food. Also: hydrate like an athlete - test-day brains run on water and sleep.' },
   { id: 'lesson', label: null, tag: 'A+', detail: null },
   { id: 'lab', label: null, tag: 'LAB', detail: null },
-  { id: 'questions', label: '25 practice questions', tag: 'A+',
-    detail: 'Right after the videos while fresh: Messer pop quizzes or Dion 220-1201, TODAY topic only. Review every miss immediately - the review is where the points come from.' },
-  { id: 'craft', label: `Coding practice: ${CRAFT_WEEKS[week][0]} — 30-45 min`, tag: 'JS',
-    detail: CRAFT_WEEKS[week][1] },
-  { id: 'jobs', label: 'Apply to 10 jobs (IT + junior dev)', tag: 'CAREER',
-    detail: 'IT support / help desk / jr dev. LinkedIn + Indeed + company sites, weighted toward postings under 100 applicants. Message one human at one company per day. Log follow-ups due.' },
-  { id: 'content', label: 'One chill green-screen video (optional, no pressure)', tag: 'CONTENT',
-    detail: 'Talk about whatever is on your mind - what you learned today, the job hunt, faith, a take. Green screen, chill energy, no script, under 90 sec. Post to TikTok + Shorts + IG or save as a draft. If the day is heavy, skip guilt-free.' },
-  { id: 'evening', label: 'Evening: 30-question light review', tag: 'A+',
-    detail: 'Mixed topics, untimed, relaxed. Wrong answers become tomorrow-morning flashcards. Then close everything.' },
+  { id: 'verbal', label: 'Verbal daily: 20 vocab cards + 5 PC questions', tag: 'JS',
+    detail: 'Every day regardless of topic: 20 vocabulary flashcards (roots/prefixes focus) + 5 paragraph-comprehension questions. Verbal is half your AFQT - keep it warm daily.' },
+  { id: 'questions', label: '25 mixed practice questions', tag: 'A+',
+    detail: 'Timed, mixed sections, right after the main study block. Review every miss immediately with the why-wrong-why-right sentence.' },
+  { id: 'pipeline', label: 'Enlistment pipeline task (15 min)', tag: 'CAREER',
+    detail: 'One per day: research IT jobs by branch (Air Force 1D7/cyber, Navy IT, Army 25B, Space Force), email/text the recruiter a question, gather documents, or read one enlistee experience for your target job. Rule: the IT role goes IN THE CONTRACT or no signature.' },
+  { id: 'content', label: 'One chill green-screen video (optional)', tag: 'CONTENT',
+    detail: 'Talk about the journey if you feel like it - under 90 sec, raw. Skip guilt-free.' },
+  { id: 'evening', label: 'Evening: 20 questions, weakest section', tag: 'A+',
+    detail: 'Light, untimed, on whatever section is currently weakest. Misses become tomorrow-morning flashcards. Then close everything.' },
 ]
-const SATURDAY = (week) => week < 5 ? [
-  { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH', detail: 'Longer session - re-read this week. Memory-verse quiz: write everything memorized so far from scratch.' },
-  { id: 'cumquiz', label: 'Cumulative quiz — ONLY topics covered so far', tag: 'A+', detail: '40 questions total from ExamCompass topic quizzes + Messer pop quizzes, ONLY on sections you have already watched. This is review, not an exam - you should score decently, and every miss shows exactly what to re-dump.' },
-  { id: 'review', label: 'Review every miss + brain-dump the week', tag: 'A+', detail: 'Why wrong + why right for each miss. Then one blank page: dump EVERYTHING from this whole week from memory. Check against notes, fill gaps.' },
-  { id: 'mealprep', label: 'Meal prep for the week', tag: 'HEALTH', detail: 'Cook the week: eggs, protein, rice, cut fruit. Whole-food eating survives busy days only if it is already in the fridge.' },
-  { id: 'batch', label: 'Batch 2-3 green-screen videos (chill)', tag: 'CONTENT', detail: 'Record a few casual talking videos in one sitting. Raw is the style. Skip if the week was heavy.' },
-  { id: 'workout', label: 'Workout or active recovery', tag: 'HEALTH', detail: 'Lift, long walk, or mobility - 30+ min.' },
-] : [
-  { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH', detail: 'Longer session - re-read this week. Memory-verse quiz: write everything memorized so far from scratch.' },
-  { id: 'exam', label: 'Full timed practice exam (you have now seen everything)', tag: 'A+', detail: '90 questions, 90 minutes, real conditions. Track the weekly score - it should climb.' },
-  { id: 'review', label: 'Review every incorrect answer', tag: 'A+', detail: 'Why wrong + why right, in writing, for every miss. Flashcard repeat offenders.' },
+const SATURDAY = (week) => [
+  { id: 'prayer', label: 'Prayer + Philippians', tag: 'FAITH', detail: 'Longer session. Memory-verse quiz: write everything memorized from scratch.' },
+  { id: 'checkpoint', label: week < 3 ? 'Timed AFQT checkpoint (AR + MK + WK + PC only)' : 'Full timed practice ASVAB', tag: 'A+', detail: week < 3 ? 'Just the four AFQT sections, timed. These four ARE your enlistment score - track them weekly.' : 'Complete test, real conditions. This close to test day, everything is a dress rehearsal.' },
+  { id: 'review', label: 'Review every miss + brain-dump the week', tag: 'A+', detail: 'Why wrong + why right per miss. Then blank-page dump of the whole week: formulas, methods, roots.' },
   { id: 'mealprep', label: 'Meal prep for the week', tag: 'HEALTH', detail: 'Cook the week: eggs, protein, rice, cut fruit.' },
-  { id: 'batch', label: 'Batch 2-3 green-screen videos (chill)', tag: 'CONTENT', detail: 'Casual talking videos, one sitting. Skip if heavy.' },
-  { id: 'workout', label: 'Workout or active recovery', tag: 'HEALTH', detail: 'Lift, long walk, or mobility - 30+ min.' },
+  { id: 'run', label: 'Long run or PT test simulation', tag: 'HEALTH', detail: 'Alternate weeks: easy long run, or full PT simulation (timed run + max pushups + max situps/plank). Log all numbers.' },
 ]
 const SUNDAY = [
   { id: 'church', label: 'Church', tag: 'FAITH', detail: 'Be present. One note from the sermon to carry into the week.' },
@@ -157,7 +121,7 @@ function planFor(dateStr, startDate) {
   const diff = Math.floor((date - start) / 86400000)
   if (diff < 0) return { status: 'before' }
   const week = Math.floor(diff / 7)
-  if (week > 7) return { status: 'after' }
+  if (week > WEEKS.length - 1) return { status: 'after' }
   const dayInWeek = diff % 7            // 0-4 study, 5 practice-exam day, 6 rest
   if (dayInWeek === 6) return { status: 'ok', week, items: SUNDAY, theme: WEEKS[week].theme }
   if (dayInWeek === 5) return { status: 'ok', week, items: SATURDAY(week), theme: WEEKS[week].theme }
@@ -206,7 +170,7 @@ export default function App() {
     <Screen>
       <div style={{ maxWidth: 440, textAlign: 'center' }}>
         <div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.25em', color: C.violetSoft, textTransform: 'uppercase', marginBottom: 12 }}>Kanae Life OS</div>
-        <h1 style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1 }}>8 weeks.<br /><span style={{ color: C.violet }}>Zero daily decisions.</span></h1>
+        <h1 style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1 }}>One month.<br /><span style={{ color: C.violet }}>Zero daily decisions.</span></h1>
         <p style={{ color: C.muted, fontSize: 13, lineHeight: 1.7, margin: '18px 0 26px' }}>
           Every day tells you exactly what to do — the A+ lesson, the lab, the applications, the DMs, the verse, the workout — with full instructions on each.
         </p>
@@ -216,7 +180,7 @@ export default function App() {
             style={{ width: '100%', background: C.void, border: `1px solid ${C.border}`, borderRadius: 8, padding: 10, color: C.snow, fontSize: 14, boxSizing: 'border-box' }} />
           <button onClick={() => { const v = document.getElementById('sd').value; if (v) setData(d => ({ ...d, startDate: v })) }}
             style={{ width: '100%', marginTop: 14, background: C.violet, color: '#fff', border: 'none', borderRadius: 10, padding: 13, fontSize: 14, fontWeight: 700, cursor: 'pointer' }}>
-            Start the 8 weeks
+            Start the sprint
           </button>
         </div>
       </div>
@@ -245,7 +209,7 @@ export default function App() {
     else break
   }
 
-  const examTarget = iso(new Date(new Date(data.startDate + 'T12:00:00').getTime() + 53 * 86400000))
+  const examTarget = iso(new Date(new Date(data.startDate + 'T12:00:00').getTime() + 25 * 86400000))
   const daysToExam = Math.ceil((new Date(examTarget) - new Date(todayStr())) / 86400000)
 
   /* week snapshot for sidebar */
@@ -271,7 +235,7 @@ export default function App() {
           <div>
             <div style={{ fontFamily: MONO, fontSize: 9, letterSpacing: '0.25em', color: C.violetSoft, textTransform: 'uppercase' }}>Kanae Life OS</div>
             <h1 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.02em', marginTop: 3 }}>
-              {tab === 'today' ? "Today's Mission" : '8-Week Bootcamp'}
+              {tab === 'today' ? "Today's Mission" : 'The 4-Week Plan'}
             </h1>
           </div>
           <nav style={{ display: 'flex', gap: 8 }}>
@@ -344,7 +308,7 @@ export default function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, textAlign: 'center' }}>
                   <div>
                     <div style={{ fontFamily: MONO, fontSize: 26, fontWeight: 700, color: daysToExam <= 7 ? C.rose : C.violetSoft }}>{daysToExam}</div>
-                    <div style={{ fontSize: 10, color: C.muted }}>days to Core 1</div>
+                    <div style={{ fontSize: 10, color: C.muted }}>days to ASVAB</div>
                   </div>
                   <div>
                     <div style={{ fontFamily: MONO, fontSize: 26, fontWeight: 700, color: C.amber }}>🔥{streak}</div>
@@ -376,13 +340,12 @@ export default function App() {
               )}
 
               <SideCard title="Resources">
-                {[['Messer 220-1201 Core 1 videos', 'https://www.professormesser.com/free-a-plus-training/220-1201/220-1201-video/220-1201-training-course/'],
-                  ['Messer 220-1201 pop quizzes', 'https://www.professormesser.com/category/free-a-plus-training/220-1201/220-1201-pop-quizzes/'],
-                  ['Jason Dion 220-1201 exams (Udemy)', 'https://www.udemy.com/user/jasondion/'],
-                  ['ExamCompass free quizzes', 'https://www.examcompass.com/'],
-                  ['javascript.info (JS craft)', 'https://javascript.info/'],
-                  ['LeetCode Easy problems', 'https://leetcode.com/problemset/?difficulty=EASY'],
-                  ['VirtualBox / UTM (labs)', 'https://www.virtualbox.org/']].map(([l, href]) => (
+                {[['March2Success — free official-style practice', 'https://www.march2success.com/'],
+                  ['ASVAB practice tests', 'https://www.asvabprogram.com/'],
+                  ['Khan Academy — math gap-filling', 'https://www.khanacademy.org/math'],
+                  ['Air Force careers (IT/cyber)', 'https://www.airforce.com/careers'],
+                  ['Navy IT rating', 'https://www.navy.com/careers-benefits/careers/intelligence-information-cryptology']
+                 ].map(([l, href]) => (
                   <a key={href} href={href} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'block', fontSize: 12, color: C.violetSoft, textDecoration: 'none', padding: '6px 0', borderBottom: `1px solid ${C.borderSoft}` }}>
                     {l} ↗
@@ -393,8 +356,8 @@ export default function App() {
 
               <SideCard title="Priority order">
                 <div style={{ fontSize: 12, lineHeight: 2, color: C.snow }}>
-                  1. Time with God<br/>2. CompTIA A+<br/>3. Job applications + interviews<br/>4. JS interview craft<br/>5. Workout + whole foods<br/>
-                  <span style={{ color: C.muted, fontSize: 11 }}>6. Chill content · 7. Everything else</span>
+                  1. Time with God<br/>2. ASVAB math (AR + MK)<br/>3. ASVAB verbal + technical<br/>4. PT prep (run!)<br/>5. Whole foods + sleep<br/>
+                  <span style={{ color: C.muted, fontSize: 11 }}>6. Recruiter pipeline · 7. Chill content</span>
                 </div>
               </SideCard>
             </div>
